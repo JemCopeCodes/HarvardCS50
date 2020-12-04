@@ -23,19 +23,32 @@ int checkSum(long number){
     return 1; //temp for debug
 }
 
+// should probably make this a function so it's cleaner.
+// int getFirstDigits(long number, int numOfDigits){
+//     number / getLength(number)
+// }
+
 int getLength(long number){
-    //13, 15, or 16 digit number?
-    printf("inside getLength\n");
-    return 13; //temp for debug
+    return 16; //temp for debug
 }
 
 int main(void){
     long number = get_long("Number: ");
     if(checkSum(number)){
-            if(getLength(number) == 13 && number/1000000000000000 % 10 == 4){
+        //printf("double nums? %ld\n", number/10000000000000 % 100);
+            if((getLength(number) == 16) && number/1000000000000000 % 10 == 4){
+                printf("VISA\n");
+            } else if (getLength(number) == 13 && number/1000000000000 % 10 == 4){
                 printf("VISA\n");
             }
-    } else{
+            else if (getLength(number) == 16 && (number/100000000000000000 % 100 == 51 || number/100000000000000000 % 100 == 52 || number/100000000000000000 % 100 == 53 || number/100000000000000000 % 100 == 54 || number/100000000000000000 % 100 == 55 )) {
+                printf("MASTERCARD\n");
+            } else if (getLength(number) == 15 && (number/10000000000000 % 100 == 34 ||number/10000000000000 % 100 % 100 == 37)) {
+                printf("AMEX\n");
+            } else {
+                printf("INVALID\n");
+            }
+    } else {
         printf("INVALID\n");
     }
 }
