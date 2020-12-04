@@ -19,7 +19,7 @@ Checksum
 
 int checkSum(long number){
     //Luhn's Algorithm
-    printf("%ld\n", number/10 % 10);//testing getting digits
+    //printf("%ld\n", number/10 % 10);//gets last digit
     return 1; //temp for debug
 }
 
@@ -29,19 +29,25 @@ int checkSum(long number){
 // }
 
 int getLength(long number){
-    return 16; //temp for debug
+    int counter = 0;
+
+    while (number > 0){
+        number /= 10;
+        counter++;
+    }
+    return counter;
 }
 
 int main(void){
     long number = get_long("Number: ");
     if(checkSum(number)){
-        //printf("double nums? %ld\n", number/10000000000000 % 100);
+        //printf("double nums? %ld\n", number/100000000000000 % 100 );
             if((getLength(number) == 16) && number/1000000000000000 % 10 == 4){
                 printf("VISA\n");
             } else if (getLength(number) == 13 && number/1000000000000 % 10 == 4){
                 printf("VISA\n");
             }
-            else if (getLength(number) == 16 && (number/100000000000000000 % 100 == 51 || number/100000000000000000 % 100 == 52 || number/100000000000000000 % 100 == 53 || number/100000000000000000 % 100 == 54 || number/100000000000000000 % 100 == 55 )) {
+            else if (getLength(number) == 16 && (number/100000000000000 % 100 == 51 || number/100000000000000 % 100 == 52 || number/100000000000000 % 100 == 53 || number/100000000000000 % 100 == 54 || number/100000000000000 % 100 == 55 )) {
                 printf("MASTERCARD\n");
             } else if (getLength(number) == 15 && (number/10000000000000 % 100 == 34 ||number/10000000000000 % 100 % 100 == 37)) {
                 printf("AMEX\n");
