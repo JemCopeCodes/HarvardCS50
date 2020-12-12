@@ -35,10 +35,12 @@ int checkSum(long number){
     return sum % 10 == 0; // If the total's last digit is 0, number is valid!
 }
 
-// should probably make this a function so it's cleaner.
-// int getFirstDigits(long number, int numOfDigits){
-//     number / getLength(number)
-// }
+int getFirstDigits(long number){
+    while (number > 100){
+        number /= 10;
+    }
+    return number;
+}
 
 int getLength(long number){
     int counter = 0;
@@ -53,15 +55,12 @@ int getLength(long number){
 int main(void){
     long number = get_long("Number: ");
     if(checkSum(number)){
-        //printf("double nums? %ld\n", number/100000000000000 % 100 );
-            if((getLength(number) == 16) && number/1000000000000000 % 10 == 4){
+        int firsts = getFirstDigits(number);
+            if((getLength(number) == 16 || getLength(number) == 13) && firsts/10 == 4){
                 printf("VISA\n");
-            } else if (getLength(number) == 13 && number/1000000000000 % 10 == 4){
-                printf("VISA\n");
-            }
-            else if (getLength(number) == 16 && (number/100000000000000 % 100 == 51 || number/100000000000000 % 100 == 52 || number/100000000000000 % 100 == 53 || number/100000000000000 % 100 == 54 || number/100000000000000 % 100 == 55 )) {
+            } else if (getLength(number) == 16 && (firsts == 51 || firsts == 52 || firsts == 53 || firsts == 54 || firsts % 100 == 55)) {
                 printf("MASTERCARD\n");
-            } else if (getLength(number) == 15 && (number/10000000000000 % 100 == 34 ||number/10000000000000 % 100 % 100 == 37)) {
+            } else if (getLength(number) == 15 && (firsts == 34 ||firsts == 37)) {
                 printf("AMEX\n");
             } else {
                 printf("INVALID\n");
