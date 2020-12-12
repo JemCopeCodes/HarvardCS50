@@ -1,4 +1,7 @@
 /*
+Passes the automatic check from CS50
+    check50 cs50/problems/2020/x/credit
+
 Credit Card Formats
     American Express
         15 digits, starts with 34 or 37
@@ -10,17 +13,26 @@ Credit Card Formats
 Checksum
     - Multiply every other digit by 2, starting with the second-to-last digit
     - Add those products digits together
-    - Add teh sum to the sum of the digits that weren't multiplied by 2.
+    - Add the sum to the sum of the digits that weren't multiplied by 2.
     - If the total's last digit is 0, number is valid!
 */
 
 #include <stdio.h>
 #include <cs50.h>
 
+//Luhn's Algorithm
 int checkSum(long number){
-    //Luhn's Algorithm
-    //printf("%ld\n", number/10 % 10);//gets last digit
-    return 1; //temp for debug
+    //going to deal with 2 digits at a time and then shift and deal with the next 2.
+    int sum = 0;
+    while (number > 0){
+        int digit1 = number % 10; //  Add the sum to the sum of the digits that weren't multiplied by 2.
+        sum += digit1;
+        int digit2 = 2*((number/10) % 10); //Multiply every other digit by 2, starting with the second-to-last digit
+        int productDigits = digit2 % 10 + digit2/10 % 10; // Add those products digits together
+        sum += productDigits;
+        number /= 100; //shift it 2 places so we can deal with the next 2 numbers
+    }
+    return sum % 10 == 0; // If the total's last digit is 0, number is valid!
 }
 
 // should probably make this a function so it's cleaner.
