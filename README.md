@@ -19,7 +19,7 @@ Use Luhn's Algorithm to determine if a credit card is syntactically valid and de
 #### Readability
 Calculate the reading level of text using the Coleman-Liau index.
 
-[Readability Problem Instructions](https://cs50.harvard.edu/x/2021/psets/2/readability/#:~:text=check50%20cs50/problems/2021/x/readability)
+[Readability Problem Instructions](https://cs50.harvard.edu/x/2021/psets/2/readability/)
 
 [My Solution](https://github.com/JemCopeCodes/HarvardCS50/blob/main/Week2/readability.c)
 #### Substitution
