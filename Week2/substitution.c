@@ -8,7 +8,6 @@ For example, if plainText[i] is 'h'(ascii 68) then the math of 'h' - 'a' is the 
 7 is the alphabetical index of the letter h (in an array that starts from 0) because it's the 8th letter in the alphabet
 because the array starts at 0, argv[1][7] will give you the 8th letter from the key
 the alphabetical index is equal to the key index because the key is also 26 letters
-
 */
 
 #include <cs50.h>
@@ -17,7 +16,6 @@ the alphabetical index is equal to the key index because the key is also 26 lett
 #include <ctype.h>
 
 int validateKey();
-
 
 int main(int argc, string argv[]){
     if(argc == 2 && validateKey(argv[1])){
