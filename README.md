@@ -1,5 +1,5 @@
 # HarvardCS50
-Code from working through the [Harvard CS50x2020](https://online-learning.harvard.edu/course/cs50-introduction-computer-science?delta=0) course.
+Code from working through the [Harvard CS50x2020](https://online-learning.harvard.edu/course/cs50-introduction-computer-science?delta=0) course. I think it's very useful to compare solutions so you can learn how to code better or see a different way to approach a problem, but make the effort to solve the problems yourself first even if it's frustrating. It's an important part of the learning process.
 
 ### Week 1:
 #### Mario
