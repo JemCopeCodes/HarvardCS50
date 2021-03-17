@@ -25,11 +25,8 @@ int checkSum(long number){
     //going to deal with 2 digits at a time and then shift and deal with the next 2.
     int sum = 0;
     while (number > 0){
-        int digit1 = number % 10; //  Add the sum to the sum of the digits that weren't multiplied by 2.
-        sum += digit1;
-        int digit2 = 2*((number/10) % 10); //Multiply every other digit by 2, starting with the second-to-last digit
-        int productDigits = digit2 % 10 + digit2/10 % 10; // Add those products digits together
-        sum += productDigits;
+        sum += number % 10; //  Add the sum to the sum of the digits that weren't multiplied by 2.
+        sum += 2*((number/10) % 10) % 10 + 2*((number/10) % 10)/10 % 10; //Multiply every other digit by 2, starting with the second-to-last digit, then add those products togther
         number /= 100; //shift it 2 places so we can deal with the next 2 numbers
     }
     return sum % 10 == 0; // If the total's last digit is 0, number is valid!
